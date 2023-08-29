@@ -15,40 +15,39 @@ Cli-Share is a powerful command-line tool that streamlines file uploading and sh
 To install cli-share, use npm:
 
 ```bash
-
 npm install -g cli-share
 
 ```
 
-# Collect API key
+### Collect API key
 
 cli-share collect-key
 
-# Upload a file
+### Upload a file
 
 cli-share upload <file-path>
 
-# Set options for sharing
+### Set options for sharing
 
 cli-share upload <file-path> --expires <expiry-date> --max-downloads <max-downloads> --auto-delete
 
-# Update sharing options
+### Update sharing options
 
 cli-share update-options <file-id>
 
-# Get a specific shared file
+### Get a specific shared file
 
 cli-share get-one <file-id>
 
-# Get a list of all shared files
+### Get a list of all shared files
 
 cli-share get-all
 
-# Delete a shared file
+### Delete a shared file
 
 cli-share delete <file-id>
 
-# View account details
+### View account details
 
 cli-share me
 
