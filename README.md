@@ -19,37 +19,55 @@ npm install -g cli-share
 
 ```
 
+## Usage
+
 ### Collect API key
 
+```bash
 cli-share collect-key
+```
 
 ### Upload a file
 
+```bash
 cli-share upload <file-path>
+```
 
 ### Set options for sharing
 
+```bash
 cli-share upload <file-path> --expires <expiry-date> --max-downloads <max-downloads> --auto-delete
+```
 
 ### Update sharing options
 
+```bash
 cli-share update-options <file-id>
+```
 
 ### Get a specific shared file
 
+```bash
 cli-share get-one <file-id>
+```
 
 ### Get a list of all shared files
 
+```bash
 cli-share get-all
+```
 
 ### Delete a shared file
 
+```bash
 cli-share delete <file-id>
+```
 
 ### View account details
 
+```bash
 cli-share me
+```
 
 ## Contribution
 
