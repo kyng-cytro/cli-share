@@ -2,4 +2,6 @@
 
 import { program } from "./command";
 
+require("dotenv").config();
+
 program.parse();
