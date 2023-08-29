@@ -1,0 +1,26 @@
+{
+  "name": "cli-share",
+  "version": "0.0.0",
+  "description": "Seamless command line file upload & sharing with file.io",
+  "bin": {
+    "share": "./dist/index.js",
+    "cli-share": "./dist/index.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "link-cli": "pnpm --global unlink practice-cli && chmod +x ./dist/index.js && pnpm --global link",
+    "dev": "tsc -w",
+    "ci": "pnpm run build",
+    "release": "pnpm run ci && changeset publish"
+  },
+  "keywords": [],
+  "author": "John Dibashi",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "typescript": "^5.2.2"
+  }
+}
