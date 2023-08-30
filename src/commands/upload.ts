@@ -51,7 +51,6 @@ export const uploadAction = async (filePath: string) => {
         },
       });
 
-      // TODO: figure out type for this
       const data = (await res.json()) as FileDetailsResponse;
 
       // NOTE: status check
