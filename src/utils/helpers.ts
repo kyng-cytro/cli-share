@@ -25,3 +25,16 @@ export const logo = chalk.cyan(`
 . ######:: ########:'####::::::::::. ######:: ##:::: ##: ##:::: ##: ##:::. ##: ########:
 :......:::........::....::::::::::::......:::..:::::..::..:::::..::..:::::..::........::
 `);
+
+export const showMessage = (
+  message: string,
+  type: "error" | "success" | "warn"
+) => {
+  if (type === "error") return console.log(chalk.bold.red(`ERROR: ${message}`));
+
+  if (type === "success")
+    return console.log(chalk.bold.green(`SUCESS: ${message}`));
+
+  if (type === "warn")
+    return console.log(chalk.bold.yellow(`WARNING: ${message}`));
+};
