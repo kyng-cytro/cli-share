@@ -30,11 +30,12 @@ export const showMessage = (
   message: string,
   type: "error" | "success" | "warn"
 ) => {
-  if (type === "error") return console.log(chalk.bold.red(`ERROR: ${message}`));
+  if (type === "error")
+    return console.log(chalk.bold.red(`\nERROR: ${message}`));
 
   if (type === "success")
-    return console.log(chalk.bold.green(`SUCESS: ${message}`));
+    return console.log(chalk.bold.green(`\nSUCESS: ${message}`));
 
   if (type === "warn")
-    return console.log(chalk.bold.yellow(`WARNING: ${message}`));
+    return console.log(chalk.bold.yellow(`\nWARNING: ${message}`));
 };
