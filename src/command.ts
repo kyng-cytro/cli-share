@@ -1,5 +1,7 @@
 import { Command } from "commander";
-import { header, logo } from "./helpers";
+import { header } from "./utils/helpers.js";
+import { loginAction } from "./commands/login.js";
+import { uploadAction } from "./commands/upload.js";
 
 export const program = new Command();
 
@@ -13,9 +15,11 @@ program
   });
 
 program
-  .command("login <api-key>")
-  .description("Register api-key from file.io")
-  .action((key: string) => {
-    console.log(logo);
-    console.log("Ready", key);
-  });
+  .command("upload <file-path>")
+  .description("upload file to file.io")
+  .action(uploadAction);
+
+program
+  .command("login")
+  .description("register api-key from file.io")
+  .action(loginAction);

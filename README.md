@@ -24,7 +24,7 @@ npm install -g cli-share
 ### Collect API key
 
 ```bash
-share login <api-key>
+share login
 ```
 
 ### Upload a file
