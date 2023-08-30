@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { password } from "@inquirer/prompts";
 import storage from "../utils/storage.js";
 import { createSpinner } from "nanospinner";
+import { UserDetailsResponse } from "../types/index.js";
 import { BASE_URL, logo, showMessage } from "../utils/helpers.js";
 
 export const loginAction = async () => {
@@ -20,7 +21,7 @@ export const loginAction = async () => {
       },
     });
 
-    const data = (await res.json()) as { success: string };
+    const data = (await res.json()) as UserDetailsResponse;
 
     if (!data || !data.success) {
       spinner.stop();
