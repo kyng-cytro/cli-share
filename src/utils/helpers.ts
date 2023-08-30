@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import columnify, { Options } from "columnify";
 
 export const BASE_URL = "https://file.io";
 
@@ -38,4 +39,8 @@ export const showMessage = (
 
   if (type === "warn")
     return console.log(chalk.bold.yellow(`\nWARNING: ${message}`));
+};
+
+export const formatAsTable = (data: Object, options: Options) => {
+  return chalk.gray(columnify(data, options));
 };
