@@ -33,10 +33,18 @@ share login
 share upload <file-path>
 ```
 
-### Set options for sharing
+### Copy link
 
 ```bash
-share upload <file-path> --expires <expiry-date> --max-downloads <max-downloads> --auto-delete
+share upload <file-path> -c
+```
+
+### Set options for sharing
+
+**please note that some features requires a paid plan**
+
+```bash
+share upload <file-path> -e <expiry-date> -m <max-downloads> -a
 ```
 
 ### Update sharing options

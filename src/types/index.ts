@@ -2,6 +2,7 @@ export interface UserDetailsResponse {
   success: boolean;
   status: number;
   planId: number;
+  code?: string;
   maxUploadBytes: number;
   maxStorageBytes: number;
   usedStorageBytes: number;
@@ -20,6 +21,7 @@ export interface FileDetailsResponse {
   downloads: number;
   maxDownloads: number;
   autoDelete: boolean;
+  code?: string;
   size: number;
   mimeType: string;
   created: string;

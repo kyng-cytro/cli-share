@@ -1,12 +1,21 @@
 import path from "path";
 import fs from "fs/promises";
+import clipboard from "clipboardy";
 import storage from "../utils/storage.js";
 import { createSpinner } from "nanospinner";
 import fetch, { FormData, File } from "node-fetch";
 import { FileDetailsResponse } from "../types/index.js";
-import { BASE_URL, logo, showMessage } from "../utils/helpers.js";
+import {
+  BASE_URL,
+  formatAsTable,
+  logo,
+  showMessage,
+} from "../utils/helpers.js";
 
-export const uploadAction = async (filePath: string) => {
+export const uploadAction = async (
+  filePath: string,
+  opts: { copy: boolean; auto: Boolean; expires: String; max: number }
+) => {
   console.log(logo);
 
   // NOTE: get key
@@ -41,6 +50,9 @@ export const uploadAction = async (filePath: string) => {
       // NOTE: create form
       const formData = new FormData();
       formData.append("file", new File(file, name));
+      formData.append("autoDelete", opts.auto);
+      if (opts.max) formData.append("maxDownloads", opts.max);
+      if (opts.expires) formData.append("expires", opts.expires);
 
       // NOTE: try uploading file
       const res = await fetch(`${BASE_URL}`, {
@@ -56,13 +68,40 @@ export const uploadAction = async (filePath: string) => {
       // NOTE: status check
       if (!data || !data.success) {
         spinner.stop();
-        console.log(data);
-        return showMessage("An error occured. Please try again.", "error");
+        return showMessage(
+          `An error occured with message ${data.code}. Please try again.`,
+          "error"
+        );
       }
 
       spinner.success();
 
-      showMessage("File uploaded successfully:\n", "success");
+      const tableData = {
+        "File ID": data.id,
+        "File Name": data.name,
+        "File Link": data.link,
+        "File Expires": new Date(data.expires).toLocaleDateString(),
+        "Auto Delete": data.autoDelete,
+        "Max Downloads": data.maxDownloads,
+      };
+
+      if (opts.copy) {
+        clipboard.write(data.link);
+      }
+
+      showMessage(
+        opts.copy
+          ? "File uploaded and link copied successfully:\n"
+          : "File uploaded successfully:\n",
+        "success"
+      );
+
+      return console.log(
+        formatAsTable(tableData, {
+          showHeaders: false,
+          minWidth: 20,
+        })
+      );
     } catch (err) {
       spinner.stop();
       console.log(err);

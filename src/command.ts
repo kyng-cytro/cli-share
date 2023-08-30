@@ -16,10 +16,20 @@ program
 
 program
   .command("upload <file-path>")
-  .description("upload file to file.io")
+  .option("-c --copy", "copy share link to clipboard")
+  .option("-a --auto", "auto delete file after download. plan_reqired")
+  .option(
+    "-e --expires <life-span>",
+    "file will automatically delete after a specified time span. e.g 5d"
+  )
+  .option(
+    "-m --max <max-download>",
+    "max download count for file. default. plan_reqired"
+  )
+  .description("upload file to file.io.")
   .action(uploadAction);
 
 program
   .command("login")
-  .description("register api-key from file.io")
+  .description("register api-key from file.io.")
   .action(loginAction);
