@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-
-import { program } from "./command";
-
-require("dotenv").config();
+import { program } from "./command.js";
 
 program.parse();

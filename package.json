@@ -6,7 +6,7 @@
     "share": "./dist/index.js",
     "cli-share": "./dist/index.js"
   },
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "link-cli": "pnpm --global unlink practice-cli && chmod +x ./dist/index.js && pnpm --global link",
     "dev": "tsc -w",
@@ -17,11 +17,16 @@
   "author": "John Dibashi",
   "license": "MIT",
   "dependencies": {
+    "@inquirer/prompts": "^3.0.4",
+    "chalk": "^5.3.0",
     "commander": "^11.0.0",
-    "dotenv": "^16.3.1"
+    "nanospinner": "^1.1.0",
+    "node-fetch": "^3.3.2",
+    "node-persist": "^3.1.3"
   },
   "devDependencies": {
     "@types/node": "^20.5.7",
+    "@types/node-persist": "^3.1.4",
     "typescript": "^5.2.2"
   }
 }
