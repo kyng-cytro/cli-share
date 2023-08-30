@@ -4,6 +4,8 @@ Cli-Share is a powerful command-line tool that streamlines file uploading and sh
 
 ## Features
 
+**please note that some features requires a paid plan**
+
 - Upload files directly from the command line.
 - Automatic deletion of shared files after a set duration.
 - Set a maximum download limit for shared files.
@@ -40,8 +42,6 @@ share upload <file-path> -c
 ```
 
 ### Set options for sharing
-
-**please note that some features requires a paid plan**
 
 ```bash
 share upload <file-path> -e <expiry-date> -m <max-downloads> -a
