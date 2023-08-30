@@ -1,6 +1,6 @@
-import chalk from "chalk";
+import fs from "fs/promises";
 import storage from "../utils/storage.js";
-import { logo } from "../utils/helpers.js";
+import { logo, showMessage } from "../utils/helpers.js";
 import { createSpinner } from "nanospinner";
 
 export const uploadAction = async (filePath: string) => {
@@ -9,12 +9,28 @@ export const uploadAction = async (filePath: string) => {
   const key = await storage.getItem("apiKey");
 
   if (!key) {
-    return console.log(
-      chalk.red.bold(
-        "ERROR: No API key available, please run the login command first. "
-      )
+    return showMessage(
+      "No API key available, please run the login command first.",
+      "error"
     );
   }
 
-  console.log("Only Authenticated should see this");
+  const spinner = createSpinner("Checking file path...").start();
+
+  try {
+    if (!(await fs.lstat(filePath)).isFile()) {
+      spinner.stop();
+      return showMessage("Invalid file path. Please try again.", "error");
+    }
+
+    spinner.update({ text: "uploading file..." });
+
+    const file = await fs.readFile(filePath);
+
+    spinner.stop();
+    console.log(file);
+  } catch {
+    spinner.stop();
+    return showMessage("Invalid file path. Please try again.", "error");
+  }
 };

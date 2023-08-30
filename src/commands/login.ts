@@ -1,9 +1,8 @@
-import chalk from "chalk";
 import fetch from "node-fetch";
 import { password } from "@inquirer/prompts";
 import storage from "../utils/storage.js";
 import { createSpinner } from "nanospinner";
-import { BASE_URL, logo } from "../utils/helpers.js";
+import { BASE_URL, logo, showMessage } from "../utils/helpers.js";
 
 export const loginAction = async () => {
   console.log(logo);
@@ -25,22 +24,25 @@ export const loginAction = async () => {
 
     if (!data || !data.success) {
       spinner.stop();
-      return console.log(
-        chalk.red.bold("ERROR: Could not validate api key. Please try again")
+      return showMessage(
+        "Could not validate api key. Please try again.",
+        "error"
       );
     }
 
-    spinner.success();
-
     await storage.setItem("apiKey", key);
 
-    return console.log(
-      chalk.green.bold(
-        "SUCCESS: Key has been successfully registered you can now run other commands."
-      )
+    spinner.success();
+
+    return showMessage(
+      "Key has been successfully registered you can now run other commands.",
+      "success"
     );
   } catch (error) {
     spinner.stop();
-    return console.log(chalk.red.bold("ERROR: Could not validate api key"));
+    return showMessage(
+      "Could not validate api key. Please try again.",
+      "error"
+    );
   }
 };
