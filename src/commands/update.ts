@@ -9,10 +9,10 @@ import {
 } from "../utils/helpers.js";
 import { FileDetailsResponse } from "../types/index.js";
 
-export const updateAction = async (
+export default async function updateAction(
   fileKey: string,
   opts: { auto: boolean; expires: string; max: number }
-) => {
+) {
   console.log(logo);
 
   // NOTE: get key
@@ -81,4 +81,4 @@ export const updateAction = async (
     spinner.stop();
     return showMessage("An error occured. Please try again.", "error");
   }
-};
+}

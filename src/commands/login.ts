@@ -5,7 +5,7 @@ import { createSpinner } from "nanospinner";
 import { UserDetailsResponse } from "../types/index.js";
 import { BASE_URL, logo, showMessage } from "../utils/helpers.js";
 
-export const loginAction = async () => {
+export default async function loginAction() {
   console.log(logo);
 
   // NOTE: collect key
@@ -58,4 +58,4 @@ export const loginAction = async () => {
       "error"
     );
   }
-};
+}

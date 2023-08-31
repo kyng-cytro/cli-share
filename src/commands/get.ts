@@ -9,12 +9,12 @@ import {
   showMessage,
 } from "../utils/helpers.js";
 
-export const getAction = async (opts: {
+export default async function getAction(opts: {
   search: string;
   sort: string;
   offset: string;
   limit: string;
-}) => {
+}) {
   console.log(logo);
 
   // NOTE: get key
@@ -104,4 +104,4 @@ export const getAction = async (opts: {
     console.log(err);
     return showMessage("An error occured. Please try again.", "error");
   }
-};
+}

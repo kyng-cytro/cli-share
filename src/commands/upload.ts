@@ -12,10 +12,10 @@ import {
   showMessage,
 } from "../utils/helpers.js";
 
-export const uploadAction = async (
+export default async function uploadAction(
   filePath: string,
   opts: { copy: boolean; auto: boolean; expires: string; max: number }
-) => {
+) {
   console.log(logo);
 
   // NOTE: get key
@@ -113,4 +113,4 @@ export const uploadAction = async (
     spinner.stop();
     return showMessage("Invalid file path. Please try again.", "error");
   }
-};
+}
