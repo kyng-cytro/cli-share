@@ -4,7 +4,10 @@ import { createSpinner } from "nanospinner";
 import { BASE_URL, logo, showMessage } from "../utils/helpers.js";
 import { FileDetailsResponseList } from "../types/index.js";
 
-export const deleteAction = async (opts: { key: string; all: boolean }) => {
+export default async function deleteAction(opts: {
+  key: string;
+  all: boolean;
+}) {
   console.log(logo);
 
   // NOTE: get key
@@ -96,4 +99,4 @@ export const deleteAction = async (opts: { key: string; all: boolean }) => {
     console.log(err);
     return showMessage("An error occured. Please try again.", "error");
   }
-};
+}
