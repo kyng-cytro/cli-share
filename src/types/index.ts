@@ -9,9 +9,14 @@ export interface UserDetailsResponse {
   rateLimit: number;
 }
 
-export interface FileDetailsResponse {
+export interface FileDetailsResponse extends FileDetails {
   success: boolean;
   status: number;
+  code?: string;
+  size: number;
+}
+
+export interface FileDetails {
   id: string;
   key: string;
   name: string;
@@ -21,9 +26,16 @@ export interface FileDetailsResponse {
   downloads: number;
   maxDownloads: number;
   autoDelete: boolean;
-  code?: string;
   size: number;
   mimeType: string;
   created: string;
   modified: string;
+}
+
+export interface FileDetailsResponseList {
+  success: boolean;
+  status: number;
+  nodes: FileDetails[];
+  size: number;
+  code?: string;
 }

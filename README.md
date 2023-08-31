@@ -50,22 +50,16 @@ share upload <file-path> -e <expiry-date> -m <max-downloads> -a
 ### Update sharing options
 
 ```bash
-share update-options <file-id>
+share update <file-id>
 ```
 
-### Get a specific shared file
+### Retrieve files or perform search
 
 ```bash
-share get-one <file-id>
+share get -s <search-query> --sort <sort-by> --offset <number> --limit <number>
 ```
 
-### Get a list of all shared files
-
-```bash
-share get-all
-```
-
-### Delete a shared file
+### Delete a file
 
 ```bash
 share delete <file-id>

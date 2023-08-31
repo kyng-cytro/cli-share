@@ -16,12 +16,16 @@ export const loginAction = async () => {
   // NOTE: key null check
   if (!key) {
     spinner.stop();
-    return showMessage("Key not specified", "error");
+    return showMessage("File.io API key not provided", "error");
   }
 
   try {
+    const url = new URL(BASE_URL);
+
+    url.pathname = "/me";
+
     // NOTE: try using key
-    const res = await fetch(`${BASE_URL}/me`, {
+    const res = await fetch(url, {
       headers: {
         Authorization: `Bearer ${key}`,
       },

@@ -14,7 +14,7 @@ import {
 
 export const uploadAction = async (
   filePath: string,
-  opts: { copy: boolean; auto: Boolean; expires: String; max: number }
+  opts: { copy: boolean; auto: boolean; expires: string; max: number }
 ) => {
   console.log(logo);
 
@@ -24,7 +24,7 @@ export const uploadAction = async (
   // NOTE: check key
   if (!key) {
     return showMessage(
-      "No API key available, please run the login command first.",
+      "Please run the 'login' command first to authenticate and access file.io services.",
       "error"
     );
   }
@@ -48,6 +48,9 @@ export const uploadAction = async (
 
     try {
       // NOTE: create form
+
+      const url = new URL(BASE_URL);
+
       const formData = new FormData();
       formData.append("file", new File(file, name));
       formData.append("autoDelete", opts.auto);
@@ -55,7 +58,7 @@ export const uploadAction = async (
       if (opts.expires) formData.append("expires", opts.expires);
 
       // NOTE: try uploading file
-      const res = await fetch(`${BASE_URL}`, {
+      const res = await fetch(url, {
         method: "POST",
         body: formData,
         headers: {
@@ -77,7 +80,7 @@ export const uploadAction = async (
       spinner.success();
 
       const tableData = {
-        "File ID": data.id,
+        "File Key": data.key,
         "File Name": data.name,
         "File Link": data.link,
         "File Expires": new Date(data.expires).toLocaleDateString(),
@@ -102,9 +105,8 @@ export const uploadAction = async (
           minWidth: 20,
         })
       );
-    } catch (err) {
+    } catch {
       spinner.stop();
-      console.log(err);
       return showMessage("An error occured. Please try again.", "error");
     }
   } catch {
