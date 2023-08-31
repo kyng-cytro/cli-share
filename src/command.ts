@@ -57,7 +57,7 @@ program
 program
   .command("delete")
   .option("-k --key <file-key>", "Specify the file key to delete.")
-  .option("-a --all", "Delete all files.")
+  .option("--all", "Delete all files.")
   .description("Delete specific or all files.")
   .action(deleteAction);
 
