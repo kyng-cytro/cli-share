@@ -53,9 +53,6 @@ export default async function loginAction() {
     );
   } catch (error) {
     spinner.stop();
-    return showMessage(
-      "Could not validate api key. Please try again.",
-      "error"
-    );
+    return showMessage("An error occured. Please try again.", "error");
   }
 }

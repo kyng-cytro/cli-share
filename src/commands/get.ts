@@ -4,9 +4,11 @@ import { createSpinner } from "nanospinner";
 import { FileDetailsResponseList } from "../types/index.js";
 import {
   BASE_URL,
+  bytesToGB,
   formatAsTable,
   logo,
   showMessage,
+  toDateString,
 } from "../utils/helpers.js";
 
 export default async function getAction(opts: {
@@ -90,8 +92,8 @@ export default async function getAction(opts: {
       key: file.key,
       name: file.name,
       link: file.link,
-      size: `${(file.size / 1024).toFixed(2)} KB`,
-      expires: new Date(file.expires).toLocaleDateString(),
+      size: bytesToGB(file.size),
+      expires: toDateString(file.expires),
       auto: file.autoDelete,
       max: file.maxDownloads,
     }));
@@ -101,7 +103,6 @@ export default async function getAction(opts: {
     return console.log(formatAsTable(table, options));
   } catch (err) {
     spinner.stop();
-    console.log(err);
     return showMessage("An error occured. Please try again.", "error");
   }
 }

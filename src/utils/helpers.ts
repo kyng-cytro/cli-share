@@ -44,3 +44,12 @@ export const showMessage = (
 export const formatAsTable = (data: Object, options: Options) => {
   return chalk.gray(columnify(data, options));
 };
+
+export const bytesToGB = (bytes: number) => {
+  const GB = bytes / (1024 * 1024 * 1024);
+  return GB.toFixed(2) + " GB";
+};
+
+export const toDateString = (date: Date | string) => {
+  return new Date(date).toDateString();
+};

@@ -96,7 +96,6 @@ export default async function deleteAction(opts: {
     }
   } catch (err) {
     spinner.stop();
-    console.log(err);
     return showMessage("An error occured. Please try again.", "error");
   }
 }
