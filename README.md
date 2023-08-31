@@ -63,7 +63,13 @@ share get -s <search-query> --sort <sort-by> --offset <number> --limit <number>
 ### Delete a file
 
 ```bash
-share delete <file-id>
+share delete -k <file-key>
+```
+
+### Delete all files
+
+```bash
+share delete --all
 ```
 
 ### View account details
