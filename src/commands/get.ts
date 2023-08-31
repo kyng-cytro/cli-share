@@ -42,7 +42,7 @@ export const getAction = async (opts: {
 
     url.search = new URLSearchParams(params).toString();
 
-    // NOTE: try uploading file
+    // NOTE: try getting files
     const res = await fetch(url, {
       headers: {
         Authorization: `Bearer ${key}`,

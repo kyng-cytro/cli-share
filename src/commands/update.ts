@@ -38,7 +38,7 @@ export const updateAction = async (
     if (opts.max) formData.append("maxDownloads", opts.max);
     if (opts.expires) formData.append("expires", opts.expires);
 
-    // NOTE: try uploading file
+    // NOTE: try updating file
     const res = await fetch(url, {
       method: "PATCH",
       body: formData,
