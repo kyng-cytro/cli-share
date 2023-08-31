@@ -50,7 +50,8 @@ share upload <file-path> -e <expiry-date> -m <max-downloads> -a
 ### Update sharing options
 
 ```bash
-share update <file-id>
+share update <file-key> -e <expiry-date> -m <max-downloads> -a
+
 ```
 
 ### Retrieve files or perform search
