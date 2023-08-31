@@ -10,6 +10,7 @@ import {
   formatAsTable,
   logo,
   showMessage,
+  toDateString,
 } from "../utils/helpers.js";
 
 export default async function uploadAction(
@@ -38,7 +39,7 @@ export default async function uploadAction(
       return showMessage("Invalid file path. Please try again.", "error");
     }
 
-    spinner.update({ text: "uploading file..." });
+    spinner.update({ text: "Uploading file..." });
 
     // NOTE: load file
     const file = await fs.readFile(filePath);
@@ -83,7 +84,7 @@ export default async function uploadAction(
         "File Key": data.key,
         "File Name": data.name,
         "File Link": data.link,
-        "File Expires": new Date(data.expires).toLocaleDateString(),
+        "File Expires": toDateString(data.expires),
         "Auto Delete": data.autoDelete,
         "Max Downloads": data.maxDownloads,
       };

@@ -6,6 +6,7 @@ import {
   formatAsTable,
   logo,
   showMessage,
+  toDateString,
 } from "../utils/helpers.js";
 import { FileDetailsResponse } from "../types/index.js";
 
@@ -64,7 +65,7 @@ export default async function updateAction(
       "File Key": data.key,
       "File Name": data.name,
       "File Link": data.link,
-      "File Expires": new Date(data.expires).toLocaleDateString(),
+      "File Expires": toDateString(data.expires),
       "Auto Delete": data.autoDelete,
       "Max Downloads": data.maxDownloads,
     };
